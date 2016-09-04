@@ -1,6 +1,6 @@
 # Nova-X
 ## Introduction
-Nova-X was an experimental operating system (OS) written by a group of young people between 2002 and 2003. The aim was to implement basic feature of a modern protected mode operating system to learn and understand low-level hardware programming. The OS is mostly based on low-level assembler and C code.
+Nova-X was an experimental operating system (OS) written by a group of young people between 2002 and 2003. The aim was to implement basic features of a modern protected mode operating system to learn and understand low-level hardware programming. The OS is mostly based on low-level assembler and C code.
 
 ## Features
 - Boot sector (bootable from a floppy disk)
