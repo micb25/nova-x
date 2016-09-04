@@ -1,0 +1,251 @@
+Hier bitte alle Eintragen, die was wo wann wie warum gemacht haben!
+
+#001 - 13.08.2003 - 11:15 Hornet
+video.asm
+: MBs Änderungen an der textcolor und backgroundcolor 
+: habe ich eingebaut. Nun solllte es bei einigen Pentium
+: 3 - System mehr keine Boot-Probleme geben!
+: Außerdem wurde die GNU-GPL Teil hinzugefügt, und eine Versionshistory!
+stdarg.h
+: Wurde leicht verändert, da durch die freien Zeilen im
+: CVS Fehler kamen. Nun sollte man alles compilieren können.
+
+#002 - 15.08.2003 - 12:00 Hornet (für sseitz)
+; Nun kann man das CVS auch für Linux verwenden!
+; Muss aber noch genau getestet werden
+
+#003 - 15.08.2003 - 12:55 thesame
+credits.c
+: Leerzeilen gelöscht (Datei war unnötigerweise doppelt so lang)
+: Meine Credits leicht verändert
+
+#004 - 15.08.2003 - 16:44 thesame
+time.c
+: outputTime() und outputDate() umgeschrieben.
+: Die beiden Funktionen verwenden nun intern printf(), um Code zu sparen.
+: Kompiliert -> Keine Fehler
+
+#005 - 16.08.2003 - 16:00 thesame
+cmos.c
+: Umstrukturierung der Datei, Verbessern von checkcmos und checkFPU,
+: Kommentierung der Funktionen, #defines für checkcmos in const geändert
+
+#006 - 16.08.2003 - 16:28 thesame
+cmos.c
+: Perfektionierung und Test der Funktion checkcmos und checkFPU.
+: Erweiterung der checkcmos
+system.c
+: Integrierung des CMOS-Checks in den Bootvorgang (bootprocces())
+
+#007 - 16.08.2003 - 21:36 thesame
+system.asm
+: Kleine Optimierung von CPUInfo()
+
+#008 - 17.08.2003 - 14:01 thesame
+string.c
+: Überarbeitung der string.c, Optimierung mehrerer Funktionen
+
+#009 - 17.08.2003 - 14:25 thesame
+system.c
+: Kleine Erweiterung der nsh(): Nun lässt sich wie früher auch über das Kommando
+: "reboot" nova-x rebooten.
+
+#010 - 17.08.2003 - 14:34 thesame
+string.c, system.c, xpad.c
+: "Umkehrung" des Rückgabewertes der strcmp(). Nun ist strcmp() ANSI C-Standard konform.
+: Kompiliert, getestet: Keine Fehler, funzt einwandfrei
+
+#011 - 17.08.2003 - 17:50 thesame
+nova-x.dev
+: Habe die Struktur der Files (im Dev-C++) etwas geändert, z.B. die
+: Section "DMA & FDC" hinzugefügt und noch fehlende Files, wie cmos.c
+: in die "Projektliste" mit aufgenommen
+
+#012 - 17.08.2003 - 18:03 thesame
+nova-x.dev
+: Habe die Änderungen wieder rückgängig gemacht. Waren schrott :)
+
+#013 - 17.08.2003 - 20:20 thesame
+commands.c
+: Überarbeitung aller Funktionen, hauptsächlich "Code-Kürzung"
+system.c
+: Kleine Erweiterung der nsh; nun lässt sich wieder Enter drücken und
+: der Cursor springt in die nächste Zeile ohne "Unknown Command" anzuzeigen.
+typedefs.h
+: Code ein wenig übersichtlicher gemacht
+
+#014 - 18.08.2003 - 11:10 MB
+time.c
+: Neue Funktionen -> Uhrzeit und Datum können gesetzt werden
+
+#015 - 18.08.2003 - 12:01 thesame
+system.c
+: Wartezeit nach dem Booten entfernt
+string.c
+: Neue Funktion "strrchr" geschrieben, konnte ich aber noch nicht testen
+
+#016 - 18.08.2003 - 14:40 MB
+system.c
+: initPrinter(); eingebaut - initialisierung der LPT Ports
+exceptions.c
+: verbesserung der Funktion showexception();
+printer.c
+: hinzugefügt - LPT Funktionen
+: später auch Druckerfunktionen
+
+#017 - 18.08.2003 - 14:56 thesame
+string.c
+: Implementieren der neuen String-Funktionen von BFabian
+string.h
+: Die string.c braucht auch eine headerfile und die hat sie jetzt :)
+: Auch wegen der Übersichtlichkeit, sind schon viele String-Funktionen
+nova-x.dev
+: Habe printer.c und string.h in das Projekt mit aufgenommen
+
+#018 - 18.08.2003 - 15:17 MB
+string.c
+: crypt() Verschlüsselungsfunktion hinzugefügt
+string.h
+: crypt() Verschlüsselungsfunktion hinzugefügt
+
+#019 - 18.08.2003 - 15:55 thesame
+string.c
+: Funktionsreihenfolge an die in der string.h angepasst
+
+#020 - 18.08.2003 - 16:31 MB
+commands.c
+: Code verkleinert und die Namen von kortos und mir zum Copyright hinzugefügt
+
+#021 - 18.08.2003 - 20:50 MB
+exceptions.c
+: es werden nun noch einige zusatzinfos ausgegeben
+system.asm
+: funktion getcr() hinzugefügt
+video.c
+: Funktionen outputBinaryl() und outputHexl() zur Ausgabe von dwords hinzugefügt
+
+#022 - 19.08.2003 10:45 thesame
+time.c und time.h
+: Korrigieren einiger Fehler bei der "Verteilung" zwischen C-File und Headerfile
+: Aufnehmen aller Funktionsheader in die time.h (war vorher nur die Hälfte drin)
+time.c
+: getdate() und gettime() insofern verbessert, dass jetzt das ausgelesene Datum bzw. Zeit
+: nicht mehr in der Struktur, die im ersten Parameter angegeben wird, gespeichert wird,
+: sondern direkt zurückgegeben wird.
+system.c
+: Hier wird nun von der geänderten gettime() und getdate() Gebrauch gemacht,
+: so kann man das ganze einfach mit einer printf()-Zeile ohne zusätzliche globale Variablen
+: ausgeben
+
+#023 - 19.08.2003 11:32 thesame
+system.c
+: Nun kann man in der Konsole über set date bzw. set time Datum und Zeit
+: setzen. Unter Bochs läuft das leider nicht, es wird zwar gesetzt, aber
+: beim nächsten auslesen des Datums ist es wieder das alte.
+
+#024 - 19.08.2003 15:21 MB
+exceptions.c
+: Exceptions an Hornet's Wünsche angepasst ;)
+
+#025 - 19.08.2003 21:08 thesame
+linker.txt, system.c, commands.c, install.bat
+: Credits und Manual entfernt (bzw. auskommentiert).
+: _      _  _   __   _   _   _____   _   __      _
+: \\    // | | //\\ | |_| | |_   _| | | //\\    |_|
+:  \\/\//  | | ||   |  _  |   | |   | | ||___    _
+:   \/\/   |_| \\// |_| |_|   |_|   |_| \\_//   |_|
+:
+: In der install.bat muss die folgende Zeile auskommentiert werden (Doppelpunkt davor):
+: %gcclink% -c -fwritable-strings "credits.c" -o "credits.o" 
+
+#026 - 20.08.2003 18:37 thesame
+commands.h, commands.c
+: Headerfile für commands.c erstellt.
+commands.c
+: set time und set date zum help-command hinzugefügt.
+
+#027 - 27.08.2003 20:44 thesame
+fdc.c
+: Einen kleinen Bug in der initalizingFDC() gefixt, Source
+: übersichtlicher gemacht und gekürzt.
+exceptions.c
+: Source gekürzt.
+
+#028 - 28.08.2003 20:59 thesame
+mm.c
+: Source übersichtlicher gemacht
+
+#029 - 28.08.2003 23:10 thesame
+video.c, video.c
+: Funktionen der video.c in der Headerfile deklariert, unnötige Deklarationen
+: in der video.c entfernt.
+
+#030 - 28.08.2003 23:48 thesame
+fdc., fdc.h, dma.c, dma.h, cmos.c, cmos.h
+: fdc.c, fdc.h und cmos.c haben nun auch Headerfiles
+
+#031 - 29.08.2003 00:24 thesame
+printer.c, printer.h
+system.c, system.h
+protmode.c, protmode.h
+mm.c, mm.h
+: Die aufgelisteten Files haben nun alle Headerfiles bekommen
+
+#032 - 29.08.2003 14:00 thesame
+typedefs.h
+: Typ dword hinzugefügt, war vorher nur in einer c-File deklariert und
+: ist nun "global" verfügbar.
+video.c
+: printf() erweitert. Nun lässt sich folgendermaßen ein Char beliebig
+: oft ausgeben: printf("Das Dollarzeichen 8 Mal nacheinander: %c8", '$');
+: Es sind nur 0 bis 9 Ausgaben auf einmal möglich, d.h., für mehr muss
+: man halt mehrere Male %cX schreiben, ich werde das aber noch erweitern.
+exceptions.c
+: Bug bei der Zeitausgabe gefixt, war ein Syntaxfehler, kA, warum der
+: Compiler nicht gemeckert hat. exceptions.c macht nun auch Gebraucht
+: von der printf()-Erweiterung bei der Ausgabe mehrerer Leerzeichen.
+exceptions.h
+: Nun auch die Headerfile für exceptions.c
+
+#033 - 29.08.2003 21:30 thesame
+keyboard.h
+: Funktionen von keyboard.c sind nun auch in keyboard.h deklariert.
+keyboard.c
+: keyboard.c überarbeitet, hauptsächlich Code strukturiert.
+
+#034 - 30.08.2003 [verschiedene Uhrzeiten] sseitz
+video.c
+: printf() erweitert. Kann jetzt auch % ausgeben.
+commands.c
+: Dummy Variable vordefiniert... (Workaround)
+system.c
+: Viele Kleinigkeiten zum Auslagern der nsh. (Vorbereitung auf das ganz Grosse :) )
+
+#035 - 31.08.2003 11:45 thesame
+cpu.c, cpu.h
+: Headerfile für cpu.c erstellt.
+
+#036 - 11.09.2003 18:38 MB
+debug.c, debug.h
+: Debug Console hinzugefügt
+math.c
+: erste math. Funktionen hinzugefügt
+keyboard.c
+: TAB für die DC eingestellt
+time.c, time.h
+: thesames Veränderungen rückgängig gemacht, wegen falscher
+: Datumsausgabe
+system.c
+: DC eingerichtet; Datums- u. Zeitfunktionen "umgestellt"
+exceptions.c
+: Datums- u. Zeitfunktionen "umgestellt"
+typedefs.h
+: currenttime und currentdate hinzugefügt - globale Zeit- u. Datumsstruktur
+
+#037 - 03.12.2003 16:37 MB
+install.bat
+: Windows/DOS Installer verbessert
+smalltext.txt
+: Testbeispiel für die fread Funktion
+speaker.h, speaker.c
+: Speaker-Unterstützung hinzugefügt(funktioniert!)

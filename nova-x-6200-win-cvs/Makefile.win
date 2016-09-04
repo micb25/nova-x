@@ -1,0 +1,84 @@
+# Project: nova-x
+# Makefile created by Dev-C++ 4.9.7.0
+
+CPP  = g++.exe
+CC   = gcc.exe
+WINDRES = windres.exe
+RES  = 
+OBJ  = xpad.o credits.o manual.o string.o system.o commands.o xCalc/xCalc.o video.o mm.o protmode.o fdc.o exceptions.o keyboard.o time.o dma.o debug.o math.o nxFS.o cmos.o printer.o $(RES)
+LIBS =  -L"C:/Dev-Cpp/lib" 
+INCS =  -I"C:/Dev-Cpp/include" 
+BIN  = nova-x.exe
+CXXFLAGS = $(INCS) 
+CFLAGS = $(INCS) 
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before nova-x.exe all-after
+
+
+clean: clean-custom
+	rm -f $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(OBJ) -o "nova-x.exe" $(LIBS) $(CFLAGS)
+
+xpad.o: xpad.c
+	$(CC) -c xpad.c -o xpad.o $(CFLAGS)
+
+credits.o: credits.c
+	$(CC) -c credits.c -o credits.o $(CFLAGS)
+
+manual.o: manual.c
+	$(CC) -c manual.c -o manual.o $(CFLAGS)
+
+string.o: string.c
+	$(CC) -c string.c -o string.o $(CFLAGS)
+
+system.o: system.c
+	$(CC) -c system.c -o system.o $(CFLAGS)
+
+commands.o: commands.c
+	$(CC) -c commands.c -o commands.o $(CFLAGS)
+
+xCalc/xCalc.o: xCalc/xCalc.c
+	$(CC) -c xCalc/xCalc.c -o xCalc/xCalc.o $(CFLAGS)
+
+video.o: video.c
+	$(CC) -c video.c -o video.o $(CFLAGS)
+
+mm.o: mm.c
+	$(CC) -c mm.c -o mm.o $(CFLAGS)
+
+protmode.o: protmode.c
+	$(CC) -c protmode.c -o protmode.o $(CFLAGS)
+
+fdc.o: fdc.c
+	$(CC) -c fdc.c -o fdc.o $(CFLAGS)
+
+exceptions.o: exceptions.c
+	$(CC) -c exceptions.c -o exceptions.o $(CFLAGS)
+
+keyboard.o: keyboard.c
+	$(CC) -c keyboard.c -o keyboard.o $(CFLAGS)
+
+time.o: time.c
+	$(CC) -c time.c -o time.o $(CFLAGS)
+
+dma.o: dma.c
+	$(CC) -c dma.c -o dma.o $(CFLAGS)
+
+debug.o: debug.c
+	$(CC) -c debug.c -o debug.o $(CFLAGS)
+
+math.o: math.c
+	$(CC) -c math.c -o math.o $(CFLAGS)
+
+nxFS.o: nxFS.c
+	$(CC) -c nxFS.c -o nxFS.o $(CFLAGS)
+
+cmos.o: cmos.c
+	$(CC) -c cmos.c -o cmos.o $(CFLAGS)
+
+printer.o: printer.c
+	$(CC) -c printer.c -o printer.o $(CFLAGS)

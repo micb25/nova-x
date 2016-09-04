@@ -1,0 +1,129 @@
+Installationsanleitung
+======================
+
+Nachfolgend wird die Installation von nova-x erklaert.
+nova-x ist ein Betriebssystem for x86-kompatible PC's.
+Es befindet sich am Anfang der Entwicklung, was sich aus der Version deutlich
+herauslesen laesst.
+Das Projekt ist primaer dafuer ausgelegt, Systemprogrammierung zu verstehen
+und anzuwenden. Sollte sich daraus ein Produktivsystem entwickeln, so ist das
+in Ordnung. Momentan ist es aber noch sehr weit davon entfernt.
+
+Wer eine Alternative zu bestehenden, funktionierenden Betriebssystemen
+fuer den Arbeitseinsatz sucht, ist hier leider an das Falsche geraten.
+Alle Anderen sollten etwas damit experimentieren.
+Individuelle Fragen koennen unter http://www.nova-x.net/ im Board ge-
+stellt werden.
+
+Diese Anleitung ist fuer folgende Version ausgelegt:
+
+nova-x 0.0.6 build 6200 / CVS, 02.09.2003 (Paket: nova-x-6200-win-cvs)
+
+Versionen _vor_ 0.0.6 build 6100 sollten nicht mehr zum Testen verwendet werden;
+das System hat sich mittlerweile deutlich verbessert.
+Spaetere Versionen sollten sich mit dieser Anleitung auch installieren lassen.
+
+Anforderungen:
+--------------
+
+1. x86-kompatibler PC (alle handelsueblichen PC's, 486, Pentium, AMD, Cyrix, etc.)
+2. ein startfaehiges Diskettenlaufwerk (3 1/2'', 1.44 MB) in diesem PC
+3. Monitor, Tastatur (idealerweise angeschlossen)
+4. eine formatierte(!) Leer-Diskette (3 1/2'', 1.44 MB)
+5. ein funktionierendes Betriebssystem (Windows (ab ca. 95), Linux, xBSD, etc...)
+
+!! nova-x ist noch weit davon entfernt, andere Betriebssysteme zu ersetzen. !!
+!! Eine Installation findet nur auf Diskette statt, bestehende Systeme      !!
+!! werden nicht davon beruehrt. Es wird nichts geloescht oder veraendert.   !!
+
+Sind die Anforderungen erfuellt? Ok, dann weiter:
+
+nova-x ist sowohl im Quelltext, als auch als Disketten-Image verfuegbar.
+Wer nova-x nur schnell mal ausprobieren moechte, sollte sich lediglich das
+aktuelle Image besorgen, und wie nachfolgend beschrieben vorgehen.
+Leute, die selbst kompilieren wollen, lesen bitte unter II)
+
+I) Disketten-Image starten
+==========================
+
+A) Das bestehende System ist Windows 95/98/ME/NT/2000/XP :
+----------------------------------------------------------
+
+Hoeh. Hier kann ich leider nix zu sagen, aber der Bereich wird bestimmt gleich
+von jemandem, der sich damit auskennt ergaenzt...
+
+B) Das bestehende System ist Linux/FreeBSD/OpenBSD/etc... :
+-----------------------------------------------------------
+
+Es werden Shell-Befehle angegeben. Solltest Du gar keine Erfahrung mit einem der
+o.g. Systeme haben, waere es hilfreich, eine Shell zu oeffnen.
+Ca. 80% der Unerfahrenen sollten mit ALT-F2 ein kleines Fensterlein bekommen, in
+das sie "xterm" eintippen koennen sollten. Evtl. hilft auch STRG-ALT-F1.
+Alle anderen lesen bitte das Handbuch :)
+
+1. Disketten-Image besorgen:
+
+$ wget http://kist.necron-x.net/~rlossin/latest/cvs-compiled-disk.img.tar.gz
+$ tar zxvf cvs-compiled-disk.img.tar.gz
+
+2. Disketten-Image auf Diskette bannen:
+(eine formatierte(!) Diskette sollte sich im Laufwerk befinden)
+
+$ dd if=./disk.img of=/dev/fd0
+
+3. Neustart des Computers (von Diskette, evtl. muss dazu das BIOS geaendert werden):
+
+$ reboot
+
+4. Anschauen, ausprobieren :)
+
+
+II) nova-x kompilieren und starten
+==================================
+
+A) Das bestehende System ist Windows 95/98/ME/NT/2000/XP :
+----------------------------------------------------------
+
+Hoeh. Hier kann ich leider auch nix zu sagen, aber der Bereich wird bestimmt gleich
+von jemandem, der sich damit auskennt ergaenzt...
+
+B) Das bestehende System ist Linux/FreeBSD/OpenBSD/etc... :
+-----------------------------------------------------------
+
+1. Quelltext besorgen:
+
+$ cd ~
+$ export CVSROOT=:pserver:novax@kist.necron-x.net:/usr/local/cvsroot
+$ cvs login
+Passwort: novax
+$ cvs checkout nova-x-6200-win-cvs
+(evtl. existiert ja bereits eine Version, dann sollte besser diese geschehen:)
+$ cvs update nova-x-6200-win-cvs
+
+2. Quellen kompilieren:
+(es wird gcc >=2.95 und gnu-ld benoetigt)
+
+$ cd nova-x-6200-win-cvs
+$ ./lx
+
+3. Entstandenes Disketten-Image auf Diskette bannen:
+
+$ dd if=./disk.img of=/dev/fd0
+
+4. Neustart von Diskette:
+
+$ reboot
+
+
+Randnotiz:
+==========
+
+nova-x ist unter der GNU GPL veroeffentlicht. Es kann frei kopiert und
+veraendert werden, solange die bishereigen Urheber benannt bleiben.
+Details sollten in der beiliegenden GNU GPL Lizenzvereinbarung gelesen
+werden.
+Zum Zeitpunkt der Schriftlegung bis auf Dauer des Widerrufs gilt folgende
+Zusatzvereinbarung:
+nova-x oder veraenderte Nachfolger duerfen nicht als Basis fuer lebens-
+erhaltende oder lebensrettende Armaturen verwendet werden.
+Die Benutzung erfolgt auf eigenes Risiko.

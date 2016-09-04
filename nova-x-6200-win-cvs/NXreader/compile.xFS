@@ -1,0 +1,25 @@
+cls
+@ ECHO OFF
+echo ..................................
+echo Compiling StdLibAsm
+nasmw -f obj -oStdLibAsm.o system.asm
+echo done...
+echo -----------------------------------
+echo Compiling StdLibC
+tcc -c -oStdLibC.o novaX.c
+echo done...
+echo -----------------------------------
+echo Compiling NXreader
+tcc -c -oNXreader.o reader.c
+echo done...
+echo -----------------------------------
+echo Starting makefile...
+jloc makefile.ctl NXreader.xec
+echo done...
+echo -----------------------------------
+cd ..
+copy NXreader\NXreader.xec NXreader.xec
+cd NXreader
+echo ...
+echo compiling complete
+echo Modul copied into NX dir

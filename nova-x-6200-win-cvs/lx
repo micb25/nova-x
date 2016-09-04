@@ -1,0 +1,68 @@
+#!/bin/bash
+
+NASMFLAG=""
+CCFLAG="-DDFLT_STTY="\"sane\"""
+echo
+echo "nova-x installer"
+echo "release 6200-win-cvs linux (angepasst an 0.0.6 6003 windows)"
+echo
+echo "Removing old files..."
+rm -f system.bin
+rm -f formatfs
+rm -f boot.bin
+rm -f system1.o
+rm -f protmode.o
+rm -f video.o
+rm -f input.o
+rm -f disk.img
+echo "done...."
+echo "Creating bin-files..."
+nasm $NASMFLAG -oboot.bin boot.asm
+echo "done..."
+echo "Creating o-files..."
+nasm $NASMFLAG -f aout -osystem1.o system.asm
+nasm $NASMFLAG -f aout -oprotmode.o protmode.asm
+nasm $NASMFLAG -f aout -ovideo.o video.asm
+nasm $NASMFLAG -f aout -ofdc.o fdc.asm
+nasm $NASMFLAG -f aout -okeyboard.o keyboard.asm
+nasm $NASMFLAG -f aout -omm.o mm.asm
+echo "done..."
+echo "Creating LOADME.COM..."
+nasm $NASMFLAG loadme.asm -o loadme.com
+echo "done..."
+echo "Compiling C-Code"
+gcc $CCFLAG \
+    -c \
+    -fleading-underscore \
+    -fforce-mem \
+    -fomit-frame-pointer \
+    -fwritable-strings \
+    -Wpointer-arith \
+    -fno-builtin \
+    "system.c" -o "system2.o"
+gcc $CCFLAG \
+    -c \
+    -fleading-underscore \
+    -fwritable-strings \
+    "protmode.c" -o "pmc.o"
+gcc $CCFLAG \
+    -c \
+    -fleading-underscore \
+    -fwritable-strings \
+    "credits.c" -o "credits.o"
+gcc $CCFLAG \
+    -fno-builtin \
+     "formatxfs/format.c" -o "formatfs"
+echo "done..."
+echo "Linking Files..."
+ld -n -s -script=linker.txt  -o "system.bin"
+echo "done..."
+echo -e "Creating Image File \"disk.img\""
+./formatfs
+echo "Writing image to floppy"
+#
+# Wenn wirklich auf Disk geschrieben werden soll, Kommentar entfernen:
+dd if=./disk.img of=/dev/fd0
+#
+echo "nova-x Installation complete..."
+sleep 3

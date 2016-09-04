@@ -1,0 +1,23 @@
+INPUT ( protmode.o , pmc.o , system1.o , system2.o ,  video.o , keyboard.o , mm.o , fdc.o , math.o , tss.o ) 
+OUTPUT_FORMAT("binary")
+
+SECTIONS
+{
+  .text 0x00 : {
+    *(.text)
+  }
+  __startofdata = SIZEOF (.text);
+  .data 0x0000 : AT (__startofdata) {
+    *(.data)
+  }
+  .bss  :
+  { 					
+    *(.bss)
+  }
+
+  __endofdata = SIZEOF (.data) + SIZEOF (.bss) + SIZEOF (.text);
+  .rodata 0x0000 : AT (__endofdata) {
+     *(.rodata)
+  }
+
+}

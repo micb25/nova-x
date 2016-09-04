@@ -1,0 +1,5 @@
+int getfilename(int FileNo, char *pointer)
+void listdir(void)
+void LoadFileIntoMemory(int FileInfoSector, int socket)
+void run (const char *pointer)
+int loadfileintomem (const char *pointer, int socket)
